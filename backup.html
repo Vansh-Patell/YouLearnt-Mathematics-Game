@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Fun Flip</title>
+
+    <!-- Style Sheet -->
+    <style>
+
+        .card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            height: 300px;
+            perspective: 1000px;
+        }
+
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.7s;
+        }
+
+        .card.flip .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .card-front {
+            background-color: #f5f4eb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-front img {
+            width: 110%;
+            height: 110%;
+            object-fit: cover;
+        }
+
+        .card-back {
+            background-color: #a6e7ef;
+            transform: rotateY(180deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4em;
+            color: white;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="card" id="card">
+        <div class="card-inner">
+            <div class="card-front">
+                <img src="./Images/cardFront.png" alt="Image">
+            </div>
+            <div class="card-back">
+                <p id="card-value"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript  -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const card = document.getElementById('card');
+            const cardValue = document.getElementById('card-value');
+            const flipDuration = 3500;
+
+            card.addEventListener('click', () => {
+            
+                cardValue.textContent = 28;
+                card.classList.add('flip');
+
+                setTimeout(() => {
+                    card.classList.remove('flip');
+                }, flipDuration);
+            });
+
+        });
+    </script>
+</body>
+</html>
