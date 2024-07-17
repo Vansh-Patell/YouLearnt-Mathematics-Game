@@ -7,15 +7,27 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="dropdown">
-        <label for="grid-level">Choose Level:</label>
-        <select id="grid-level">
-            <option value="3">Level (1) - 3x3 grid</option>
-            <option value="4">Level (2) - 4x4 grid</option>
-            <option value="5">Level (3) - 5x5 grid</option>
-        </select>
+    <div class="header">
+        <div class="stats-left">
+            <div>Allowed Flips: <span id="allowed-flips">0</span></div>
+            <div>Wrong Flips: <span id="wrong-flips">0</span></div>
+            <div>Matched Flips: <span id="matched-flips">0</span></div>
+            <div>Remaining Flips: <span id="remaining-flips">0</span></div>
+        </div>
+        <div class="stats-center">
+            <div>Accuracy: <span id="accuracy">0%</span></div>
+            <div>Bonus: <span id="bonus">0</span></div>
+            <div>Tips: <span id="tips">0</span></div>
+        </div>
+        <div class="dropdown">
+            <label for="grid-level">Choose Level:</label>
+            <select id="grid-level">
+                <option value="3">Level (1) - 3x3 grid</option>
+                <option value="4">Level (2) - 4x4 grid</option>
+                <option value="5">Level (3) - 5x5 grid</option>
+            </select>
+        </div>
     </div>
-
     <div class="container">
         <div class="card-grid" id="card-grid">
             <!-- Cards will be dynamically added here -->

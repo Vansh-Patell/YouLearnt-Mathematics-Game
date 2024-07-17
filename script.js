@@ -1,6 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     const cardGrid = document.getElementById('card-grid');
     const gridLevelSelect = document.getElementById('grid-level');
+    const allowedFlipsSpan = document.getElementById('allowed-flips');
+    const wrongFlipsSpan = document.getElementById('wrong-flips');
+    const matchedFlipsSpan = document.getElementById('matched-flips');
+    const remainingFlipsSpan = document.getElementById('remaining-flips');
+    const accuracySpan = document.getElementById('accuracy');
+    const bonusSpan = document.getElementById('bonus');
+    const tipsSpan = document.getElementById('tips');
 
     // Event listener for when grid level changes
     gridLevelSelect.addEventListener('change', () => {
@@ -16,12 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const totalCards = level * level;
 
         // Calculate card size dynamically based on viewport size and grid level
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
+        const headerHeight = document.querySelector('.header').offsetHeight;
+        const availableHeight = window.innerHeight - headerHeight - 30; // Adjust 30 for padding
+        const availableWidth = window.innerWidth - 30; // Adjust 30 for padding
 
-        // Calculate maximum card size that fits within the viewport
-        const maxCardWidth = Math.floor(viewportWidth / level) - 20; // Adjust 20 for grid gap
-        const maxCardHeight = Math.floor(viewportHeight / level) - 20; // Adjust 20 for grid gap
+        const maxCardWidth = Math.floor(availableWidth / level) - 10; // Adjust 10 for grid gap
+        const maxCardHeight = Math.floor(availableHeight / level) - 10; // Adjust 10 for grid gap
         const cardSize = Math.min(maxCardWidth, maxCardHeight);
 
         // Create card elements
@@ -56,6 +63,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     card.classList.remove('flip');
                 }, 1000);
+                // Update game stats here
+                // Example: increment wrong flips count
+                let wrongFlips = parseInt(wrongFlipsSpan.textContent);
+                wrongFlips++;
+                wrongFlipsSpan.textContent = wrongFlips;
             });
 
             // Append card to card grid
